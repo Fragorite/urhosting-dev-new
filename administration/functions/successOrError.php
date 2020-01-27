@@ -1,12 +1,26 @@
 <?php
+    // LES REQUETES VALIDES
     $deleteAllAlertsSuccess = "Toutes les alertes ont été supprimées.";
+    $createPartnerSuccess = "Le partenaire a bien été ajouté.";
+    $cancelPartnerContractSuccess = "Le contrat avec le partenaire a été résilié. Vous pouvez à tout moment le retrouver dans l'onglet \"<strong>Contrats terminés</strong>\" ";
 
+    // LES ERREURS
+    $accessDenied = "<strong>Erreur !</strong> Vous n'avez pas la permission pour accéder à cette fonction.";
+
+    // LES COINS DES VALIDES
     if(isset($_GET['deleteAllAlertsSuccess'])){
         echoMsg($deleteAllAlertsSuccess, 1);
     }
     else if(isset($_GET['createPartnerSuccess'])){
-        $contentAlert = $createPartnerSuccess;
-        $alertSuccess = true;
+        echoMsg($createPartnerSuccess, 1);
+    }
+    else if(isset($_GET['cancelPartnerContractSuccess'])){
+        echoMsg($cancelPartnerContractSuccess, 1);
+    }
+
+    // LE COIN DES ERREURS
+    if(isset($_GET['accessDenied'])){
+        echoMsg($accessDenied, 2);
     }
 
     ?>

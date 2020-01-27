@@ -4,7 +4,7 @@
       if(isset($_GET['cancel'])){
         $part = intval($_GET['cancel']);
         $cancel = $db->query('UPDATE site_partners SET active = 0 WHERE id = "'.$part.'"');
-        header('Location: ?cancelled=1');
+        header('Location: ?cancelPartnerContractSuccess');
       }
 ?>
 <!DOCTYPE html>
@@ -55,28 +55,7 @@
             <h1 class="h3 mb-0 text-gray-800">LISTE DES PARTENAIRES</h1>
             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
           </div>
-          <?php
-            if(isset($_GET['cancelled']))
-            {
-              $cancelled = intval($_GET['cancelled']);
-              if($cancelled == 1)
-              {
-          ?>
-          <div class="alert alert-dismissible alert-success">
-            <button class="close" type="button" data-dismiss="alert">&times;</button>
-              Le contrat a été résilié. Vous pouvez toujours le retrouver dans la partie <b>Contrats terminés</b>
-          </div>
-          <?php
-              } else {
-          ?>
-          <div class="alert alert-dismissible alert-danger">
-            <button class="close" type="button" data-dismiss="alert">&times;</button>
-              <b>Oups ... Une erreur s'est produite.</b> Merci de contacter le WebMaster pour lui signaler.
-          </div>
-          <?php
-              }
-            }
-            ?>
+
           <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active show" href="#partner-active" data-toggle="tab">Contrats actifs</a>

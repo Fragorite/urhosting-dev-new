@@ -134,13 +134,7 @@
                                                                         'partnerConditions' => $file_conditions,
                                                                         'password'          => '0'
                                                                     ));
-
-                                                                    echo "OK FINAL";
-                                                                /*} else {
-                                                                    $errors['file'] = "Champs requis !";
-                                                                    echo "erreur 12";
-                                                                    echo $_FILES['contractPartnerAddFile']['error'];
-                                                                }*/
+                                                                    header('Location: listPartner.php?createPartnerSuccess');
                                                             }
                                                         } else {
                                                             $errors['mailAdd'] = "Champs requis !";

@@ -25,7 +25,7 @@
                 'id' => $alert['id']
             ));
         }
-        echo "<META HTTP-equiv='refresh' content=0;URL='?deleteAllAlertsSuccess=1'>";
+        echo "<META HTTP-equiv='refresh' content=0;URL='?deleteAllAlertsSuccess'>";
     }
 ?>
 
@@ -194,4 +194,4 @@
     </div>
 
 </nav>
-     <?php include('functions/successOrError.php'); ?>
+     <?php include('urhosting-dev-new/administration/functions/successOrError.php'); ?>
