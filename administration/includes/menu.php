@@ -74,12 +74,12 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Groupes</h6>
-            <a class="collapse-item" href="#">Ajouter un groupe</a>
-            <a class="collapse-item" href="#">Liste des groupes</a>
+            <a class="collapse-item" href="/urhosting-dev-new/administration/products/addProductGroup.php">Ajouter un groupe</a>
+            <a class="collapse-item" href="/urhosting-dev-new/administration/products/listProductGroup.php">Liste des groupes</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Produits</h6>
-            <a class="collapse-item" href="#">Ajouter un produit</a>
-            <a class="collapse-item" href="#">Liste des produits</a>
+            <a class="collapse-item" href="/urhosting-dev-new/administration/products/addProduct.php">Ajouter un produit</a>
+            <a class="collapse-item" href="/urhosting-dev-new/administration/products/listProducts.php">Liste des produits</a>
           </div>
         </div>
       </li>

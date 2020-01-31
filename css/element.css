@@ -1,0 +1,14 @@
+.host-btn.btn-green {
+	background-color: #5aba41;
+}
+
+.host-btn.btn-white-green {
+	color: #5aba41
+}
+
+	.host-btn.btn-white-green .i-round {
+		background-color: #5aba41;
+	}
+	.btn-blue{
+	   background-color: #03bfda;
+	}
