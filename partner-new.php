@@ -126,20 +126,24 @@
                             <form action="#" method="POST" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <span> username</span>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                    <div class="col-md-12">
-                                        <span>email</span>
+                                        <span>Fonction du déclarant</span>
                                         <input type="text" class="form-control">
                                     </div>
                                     <div class="col-md-6">
-                                        <span>password</span>
-                                        <input type="password" class="form-control">
+                                        <span> Nom</span>
+                                        <input type="text" class="form-control">
                                     </div>
                                     <div class="col-md-6">
-                                        <span>confirm password</span>
-                                        <input type="password" class="form-control">
+                                        <span>Prénom</span>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span>Email</span>
+                                        <input type="email" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span>Téléphone</span>
+                                        <input type="text" class="form-control">
                                     </div>
                                     <div class="col-md-4">
                                         <span>Genre</span>
@@ -165,71 +169,155 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-4">
-                                                <select class="form-control" id="month">
-                                                    <option disabled>Jour</option>
-                                                    <option>Month</option>
-                                                    <option>jan</option>
-                                                    <option>feb</option>
-                                                    <option>mar</option>
-                                                    <option>aprail</option>
-                                                    <option>may</option>
-                                                    <option>june</option>
+                                                <select class="form-control" id="month" name="choiceMonthOfBirth">
+                                                    <option disabled>Mois</option>
+                                                    <option value="1">Janvier</option>
+                                                    <option value="2">Février</option>
+                                                    <option value="3">Mars</option>
+                                                    <option value="4">Avril</option>
+                                                    <option value="5">Mai</option>
+                                                    <option value="6">Juin</option>
+                                                    <option value="7">Juillet</option>
+                                                    <option value="8">Août</option>
+                                                    <option value="9">Septembre</option>
+                                                    <option value="10">Octobre</option>
+                                                    <option value="11">Novembre</option>
+                                                    <option value="12">Décembre</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-4">
-                                                <select class="form-control" id="year">
-                                                    <option>Year</option>
-                                                    <option>2000</option>
-                                                    <option>2001</option>
-                                                    <option>2002</option>
-                                                    <option>2003</option>
-                                                    <option>2004</option>
+                                                <select class="form-control" id="year" name="choiceYearOfBirth">
+                                                    <?php for($i = 2020; $i >= 1940; $i--) { ?>
+                                                    <option value="<?= $i; ?>"><?= $i; ?></option>
+                                                    <?php } ?>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
-                                        <span>address</span>
+                                        <span>Adresse</span>
                                         <input type="text" class="form-control">
                                     </div>
                                     <div class="col-md-4">
-                                        <span>country*</span>
-                                        <select class="form-control" id="country">
-                                            <option>Country</option>
-                                            <option>india</option>
-                                            <option>austraia</option>
-                                            <option>pakistan</option>
-                                            <option>europe</option>
-                                            <option>sydney</option>
-                                        </select>
+                                        <span>Code Postal</span>
+                                        <input type="text" class="form-control">
                                     </div>
                                     <div class="col-md-4">
-                                        <span>state*</span>
-                                        <select class="form-control" id="state">
-                                            <option>state</option>
-                                            <option>rajasthan</option>
-                                            <option>andhra pradesh</option>
-                                            <option>gujrat</option>
-                                            <option>MP</option>
-                                            <option>orissa</option>
-                                        </select>
+                                        <span>Ville</span>
+                                        <input type="text" class="form-control">
                                     </div>
                                     <div class="col-md-4">
-                                        <span>city*</span>
-                                        <select class="form-control" id="city">
-                                            <option>City</option>
-                                            <option>saket</option>
-                                            <option>lajpat</option>
-                                            <option>malviya</option>
-                                            <option>huda city</option>
-                                        </select>
+                                        <span>Pays</span>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <?php
+                                        $idForm = intval($_GET['id']);
+                                        if($idForm == 2 || $idForm == 3){
+                                    ?>
+                                            <div class="col-md-6">
+                                                <span>Nom de l'<?php if($idForm == 2) { echo "entreprise"; } else { echo "association"; } ?></span>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <span><?php if($idForm == 2) { echo "SIRET"; } else { echo "RNA"; } ?></span>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <span>Présentation de l'<?php if($idForm == 2) { echo "entreprise"; } else { echo "association"; } ?></span><br/>
+                                                <textarea style="min-width: 720px; min-height: 300px; border-radius: 3%"></textarea>
+                                            </div>
+                                    <?php } else { ?>
+                                        <div class="col-md-6">
+                                            <span>Nom du projet</span>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span>Support (Jeux, Chaine YT ...)</span>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    <?php } ?>
+                                    <div class="col-md-12">
+                                        <span>Début du contrat</span>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <select class="form-control" id="day" name="choiceDayOfStart">
+                                                    <?php for($i = 1; $i <= 31; $i++){ ?>
+                                                    <option value="<?= $i; ?>"><?= $i; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select class="form-control" id="month" name="choiceMonthOfStart">
+                                                    <option disabled>Mois</option>
+                                                    <option value="1">Janvier</option>
+                                                    <option value="2">Février</option>
+                                                    <option value="3">Mars</option>
+                                                    <option value="4">Avril</option>
+                                                    <option value="5">Mai</option>
+                                                    <option value="6">Juin</option>
+                                                    <option value="7">Juillet</option>
+                                                    <option value="8">Août</option>
+                                                    <option value="9">Septembre</option>
+                                                    <option value="10">Octobre</option>
+                                                    <option value="11">Novembre</option>
+                                                    <option value="12">Décembre</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select class="form-control" id="year" name="choiceYearOfStart">
+                                                    <?php for($i = 2020; $i <= 2022; $i++) { ?>
+                                                    <option value="<?= $i; ?>"><?= $i; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <input type="checkbox" name="termscon" id="termscon" value="option1">
+                                        <span>Fin du contrat</span>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <select class="form-control" id="day" name="choiceDayOfEnd">
+                                                    <?php for($i = 1; $i <= 31; $i++){ ?>
+                                                    <option value="<?= $i; ?>"><?= $i; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select class="form-control" id="month" name="choiceMonthEnd">
+                                                    <option disabled>Mois</option>
+                                                    <option value="1">Janvier</option>
+                                                    <option value="2">Février</option>
+                                                    <option value="3">Mars</option>
+                                                    <option value="4">Avril</option>
+                                                    <option value="5">Mai</option>
+                                                    <option value="6">Juin</option>
+                                                    <option value="7">Juillet</option>
+                                                    <option value="8">Août</option>
+                                                    <option value="9">Septembre</option>
+                                                    <option value="10">Octobre</option>
+                                                    <option value="11">Novembre</option>
+                                                    <option value="12">Décembre</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select class="form-control" id="year" name="choiceYearOfEnd">
+                                                    <?php for($i = 2020; $i <= 2022; $i++) { ?>
+                                                    <option value="<?= $i; ?>"><?= $i; ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                                <span>Présentation du projet</span><br/>
+                                                <textarea style="min-width: 720px; min-height: 300px; border-radius: 3%" placeholder="Merci d'inscrire également ce que vous attendez de UrHosting, et ce que vous pouvez apporter à UrHosting. Il est également conseillé de fournir tous les liens pour justifier, tel que votre chaine Youtube, un lien vers votre site web ou autres."></textarea>
+                                            </div>
+
+                                    <div class="col-md-12">
+                                        <input type="checkbox" name="termscon" id="termscon" value="exactInfo">
                                         <label for="termscon">
-                                            I agree the User Agreement and
-                                            <a href="">Terms & Condition.</a>
+                                            Je certifie l'exactitude des informations données ci-dessus. Je sais que je m'engage à des poursuites à mon encontre dans le cas d'une tentative de fraude ou d'escroquerie.<br/>
                                         </label>
                                     </div>
                                 </div>
