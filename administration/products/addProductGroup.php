@@ -10,38 +10,95 @@
                     $grpExist = $searchGroupExist->rowCount();
                     if($grpExist == 0){
                         // FICHIER
-                        if(!file_exists('images')){
-                            mkdir('images', 0777, true);
-                        }
-                        $infosfichier_contract = pathinfo($_FILES['imageAddFile']['name']);
-                        $name_contract = $_FILES["imageAddFile"]["name"];
+                        $file_ext = explode('.', $_FILES['imageAddFile']['name']);
+                        $file_ext = strtolower(end($file_ext));
 
-                        $extension_contract = explode('.', $name_contract);
-                        $ext_contract = $extension_contract[sizeof($extension_contract) - 1];
-                        $extensions_autorisees = 'png';
-                        $file_contract = '' .$_POST['grpSelectAdd']. '.' .$ext_contract;
+                            $newName = uniqid() . '.' . $file_ext;
+                            move_uploaded_file($_FILES['imageAddFile']['tmp_name'], 'images/' . $newName);
 
-                        move_uploaded_file($_FILES['imageAddFile']['tmp_name'], 'images/'.$file_contract);
+                            // FIN FICHIER
+                            $grpTitle = htmlspecialchars($_POST['titleAdd']);
+                            $grpDescription = htmlspecialchars($_POST['contentAdd']);
+                            $grpIdWhmcs = $_POST['grpSelectAdd'];
+                            $createdAt = date('d/m/Y à H:i');
+                            $pageName = $_POST['pageName'];
+                            if (isset($_POST['hiddenSwitch']) && $_POST['hiddenSwitch'] == "on") {
+                                $hidden = 1;
+                            } else {
+                                $hidden = 0;
+                            }
+                            if (isset($_POST['addRam']) && $_POST['addRam'] == "on") {
+                                $addRam = 1;
+                            } else {
+                                $addRam = 0;
+                            }
+                            if (isset($_POST['addStockage']) && $_POST['addStockage'] == "on") {
+                                $addStockage = 1;
+                            } else {
+                                $addStockage = 0;
+                            }
+                            if (isset($_POST['addProcess']) && $_POST['addProcess'] == "on") {
+                                $addProcess = 1;
+                            } else {
+                                $addProcess = 0;
+                            }
+                            if (isset($_POST['addSlots']) && $_POST['addSlots'] == "on") {
+                                $addSlots = 1;
+                            } else {
+                                $addSlots = 0;
+                            }
+                            if (isset($_POST['addDatabase']) && $_POST['addDatabase'] == "on") {
+                                $addDatabase = 1;
+                            } else {
+                                $addDatabase = 0;
+                            }
+                            if (isset($_POST['addBandwith']) && $_POST['addBandwith'] == "on") {
+                                $addBandwith = 1;
+                            } else {
+                                $addBandwith = 0;
+                            }
+                            if (isset($_POST['typeServersGaming']) && $_POST['typeServersGaming'] == "on") {
+                                $typeServersGaming = 1;
+                            } else {
+                                $typeServersGaming = 0;
+                            }
+                            if (isset($_POST['typeServersVPS']) && $_POST['typeServersVPS'] == "on") {
+                                $typeServersVPS = 1;
+                            } else {
+                                $typeServersVPS = 0;
+                            }
+                            if (isset($_POST['typeWeb']) && $_POST['typeWeb'] == "on") {
+                                $typeWeb = 1;
+                            } else {
+                                $typeWeb = 0;
+                            }
+                            if (isset($_POST['typeOthers']) && $_POST['typeOthers'] == "on") {
+                                $typeOthers = 1;
+                            } else {
+                                $typeOthers = 0;
+                            }
 
-                        // FIN FICHIER
-                        $grpTitle = htmlspecialchars($_POST['titleAdd']);
-                        $grpDescription = htmlspecialchars($_POST['contentAdd']);
-                        $grpIdWhmcs = $_POST['grpSelectAdd'];
-                        $createdAt = date('d/m/Y à H:i');
-                        if(isset($_POST['hiddenSwitch']) && $_POST['hiddenSwitch'] == "on"){
-                            $hidden = 1;
-                        } else {
-                            $hidden = 0;
-                        }
-                        $insertGroup = $db->prepare('INSERT INTO site_products_groups(title,description,groupIdWhmcs,hidden,created_at) VALUES (:title, :description, :groupIdWhmcs, :hidden, :created_at)');
-                        $insertGroup->execute(array(
-                            'title'         => $grpTitle,
-                            'description'   => $grpDescription,
-                            'groupIdWhmcs'  => $grpIdWhmcs,
-                            'hidden'        => $hidden,
-                            'created_at'    => $createdAt
-                        ));
-                        header('Location: listProductGroups.php');
+                            $insertGroup = $db->prepare('INSERT INTO site_products_groups(title,description,groupIdWhmcs,hidden,created_at, typeServersGaming, typeServersVPS, typeWeb, typeOthers, img, pageName, addRam, addStockage, addBandwith, addSlots, addProcess, addDatabase) VALUES (:title, :description, :groupIdWhmcs, :hidden, :created_at, :typeServersGaming, :typeServersVPS, :typeWeb, :typeOthers, :img, :pageName, :addRam, :addStockage, :addBandwith, :addSlots, :addProcess, :addDatabase)');
+                            $insertGroup->execute(array(
+                                'title' => $grpTitle,
+                                'description' => $grpDescription,
+                                'groupIdWhmcs' => $grpIdWhmcs,
+                                'hidden' => $hidden,
+                                'created_at' => $createdAt,
+                                'typeServersGaming' => $typeServersGaming,
+                                'typeServersVPS' => $typeServersVPS,
+                                'typeWeb' => $typeWeb,
+                                'typeOthers' => $typeOthers,
+                                'img' => $newName,
+                                'pageName' => $pageName,
+                                'addRam' => $addRam,
+                                'addStockage' => $addStockage,
+                                'addBandwith' => $addBandwith,
+                                'addSlots' => $addSlots,
+                                'addProcess' => $addProcess,
+                                'addDatabase' => $addDatabase
+                            ));
+                            header('Location: listProductGroups.php');
                     } else {
                         $error = "Un groupe correspondant à cet ID WHMCS a déjà été créé !";
                     }
@@ -107,19 +164,51 @@
                         <tr>
                             <th>
                                 <div class="form-group <?php if(isset($errors['titleAdd'])) { echo 'has-danger'; } ?>">
-                                <label class="col-sm-2 col-form-label" for="titleLabel">Nom</label>
-                                    <input type="text" class="form-control form-control-tutorial <?php if(isset($errors['titleAdd'])) { echo 'is-invalid'; } ?>" id="titleLabel" name="titleAdd" placeholder="Nom du groupe" style="width: 300px;">
+                                <label class="col-form-label" for="titleLabel">Nom</label>
+                                    <input required type="text" class="form-control form-control-tutorial <?php if(isset($errors['titleAdd'])) { echo 'is-invalid'; } ?>" id="titleLabel"
+                                           name="titleAdd" placeholder="Nom du groupe" style="width: 300px;">
                                     <div class="invalid-feedback"><?= $errors['titleAdd']; ?></div>
                                 </div>
                             </th>
                         </tr>
                     </table>
+                  <div class="form-group">
+                      <div class="custom-control custom-switch">
+                          <input type="checkbox" class="custom-control-input" id="customSwitch10" name="typeServersGaming">
+                          <label class="custom-control-label" for="customSwitch10">TYPE : Serveur Gaming</label>
+                      </div>
+                      <div class="custom-control custom-switch">
+                          <input type="checkbox" class="custom-control-input" id="customSwitch20" name="typeServersVPS">
+                          <label class="custom-control-label" for="customSwitch20">TYPE : Serveur VPS</label>
+                      </div>
+                      <div class="custom-control custom-switch">
+                          <input type="checkbox" class="custom-control-input" id="customSwitch30" name="typeWeb">
+                          <label class="custom-control-label" for="customSwitch30">TYPE : Web</label>
+                      </div>
+                      <div class="custom-control custom-switch">
+                          <input type="checkbox" class="custom-control-input" id="customSwitch40" name="typeOthers">
+                          <label class="custom-control-label" for="customSwitch40">TYPE : Autres</label>
+                      </div>
+                      <table>
+                          <tr>
+                              <th>
+                                  <div class="form-group <?php if(isset($errors['pageName'])) { echo 'has-danger'; } ?>">
+                                      <label class="col-form-label" for="titleLabel">Nom de la page (.php)</label>
+                                      <input required type="text" class="form-control form-control-tutorial <?php if(isset($errors['pageName'])) { echo 'is-invalid'; } ?>" id="titleLabel"
+                                             name="pageName" placeholder="Nom de la page avec extension .php" style="width: 300px;">
+                                      <div class="invalid-feedback"><?= $errors['pageName']; ?></div>
+                                  </div>
+                              </th>
+                          </tr>
+
+              </div>
                     <table>
                         <tr>
                             <th>
                                 <div class="form-group">
                                     <label for="contentLabel">Courte description</label>
-                                    <textarea class="form-control form-control-tutorial <?php if(isset($errors['contentAdd'])) { echo 'is-invalid'; } ?>" id="contentLabel" rows="10" name="contentAdd" style="width: 600px;"></textarea>
+                                    <textarea required class="form-control form-control-tutorial <?php if(isset($errors['contentAdd'])) { echo 'is-invalid'; } ?>" id="contentLabel"
+                                              rows="10" name="contentAdd" style="width: 600px;"></textarea>
                                     <div class="invalid-feedback"><?= $errors['contentAdd']; ?></div>
                                 </div>
                             </th>
@@ -162,6 +251,33 @@
                             </th>
                         </tr>
                     </table>
+                      <div class="form-group">
+                          <div class="custom-control custom-switch">
+                              <input type="checkbox" class="custom-control-input" id="customSwitch1" name="addProcess">
+                              <label class="custom-control-label" for="customSwitch1">Utilisation d'un processeur</label>
+                          </div>
+                          <div class="custom-control custom-switch">
+                              <input type="checkbox" class="custom-control-input" id="customSwitch2" name="addRam">
+                              <label class="custom-control-label" for="customSwitch2">Utilisation de la RAM</label>
+                          </div>
+                          <div class="custom-control custom-switch">
+                              <input type="checkbox" class="custom-control-input" id="customSwitch3" name="addDatabase">
+                              <label class="custom-control-label" for="customSwitch3">Utilisation de base de donnée</label>
+                          </div>
+                          <div class="custom-control custom-switch">
+                              <input type="checkbox" class="custom-control-input" id="customSwitch4" name="addSlots">
+                              <label class="custom-control-label" for="customSwitch4">Utilisation de SLOTS</label>
+                          </div>
+                          <div class="custom-control custom-switch">
+                              <input type="checkbox" class="custom-control-input" id="customSwitch5" name="addStockage">
+                              <label class="custom-control-label" for="customSwitch5">Utilisation de stockage</label>
+                          </div>
+                          <div class="custom-control custom-switch">
+                              <input type="checkbox" class="custom-control-input" id="customSwitch6" name="addBandwith">
+                              <label class="custom-control-label" for="customSwitch6">Utilisation de bande passante</label>
+                          </div>
+
+                      </div>
                     <input type="submit" class="btn btn-success btn-user btn-block" name="formProductsGroupAdd" value="Ajouter le groupe"/>
                 </form>
                 <div class="d-flex justify-content-center"><a href="listProductGroups.php"><input type="submit" class="btn btn-secondary btn-user btn-block" value="Retour"/></a></div>
