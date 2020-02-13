@@ -5,7 +5,7 @@
                 <div class="logo-blue">
                     <h1>
                         <a href="index.php">
-                            <img src="img/logo-blue.png" alt="UrHosting" title="logo">
+                            <img src="img/logo.png" alt="UrHosting" title="UrHosting">
                         </a>
                     </h1>
                 </div>
@@ -15,24 +15,10 @@
                         <li class="logs">
                             <ul>
                                 <li class="drops login">
-                                    <a class="drop-links" href="#">Connexion</a>
-                                    <div class="login-panel">
-                                        <form action="#" class="login-form">
-                                            <input type="email" class="form-control" placeholder="Email">
-                                            <input type="password" class="form-control" placeholder="Mot de passe">
-                                            <h3>
-                                                <a href="#">mot de passe oublié ? </a>
-                                            </h3>
-                                            <button type="submit" class="btn-submit">Connexion</button>
-                                            <p>
-                                                Pas inscrit ?
-                                                <a href="register.html"> Inscription </a>
-                                            </p>
-                                        </form>
-                                    </div>
+                                    <a class="drop-links" href="clients/clientarea.php">Connexion</a>
                                 </li>
                                 <li class="drops register">
-                                    <a class="drop-links" href="#">Inscription</a>
+                                    <a class="drop-links" href="clients/register.php">Inscription</a>
                                 </li>
                                 <li class="drops languages">
                                     <a class="drop-links" href="#">
@@ -48,17 +34,7 @@
                                             </li>
                                             <li class="lang-links">
                                                 <a href="#">
-                                                    <img src="img/icons/lang-1.png" alt="flag"> English
-                                                </a>
-                                            </li>
-                                            <li class="lang-links">
-                                                <a href="#">
-                                                    <img src="img/icons/lang-2.png" alt="flag"> German
-                                                </a>
-                                            </li>
-                                            <li class="lang-links">
-                                                <a href="#">
-                                                    <img src="img/icons/lang-4.png" alt="flag"> Japanese
+                                                    <img src="img/icons/lang-1.png" alt="flag"> English <i>(Bientôt)</i>
                                                 </a>
                                             </li>
                                         </ul>
@@ -86,32 +62,32 @@
                                     <ul class="sub-menu">
                                         <li class="menu-item">
                                             <h3>Serveurs Gaming</h3>
-                                            <a class="dropdown-item" href="#"><b>VOIR TOUT</b></a>
-                                            <a class="dropdown-item" href="about-us.html"> Minecraft</a>
-                                            <a class="dropdown-item" href="service.html"> Minecraft Pocket Edition</a>
-                                            <a class="dropdown-item" href="domain.html"> Five M</a>
-                                            <a class="dropdown-item" href="our-team.html">CS:GO</a>
-                                            <a class="dropdown-item" href="contact-us.html">Arma III</a>
-                                            <a class="dropdown-item" href="elements.html">Terraria</a>
+                                            <a class="dropdown-item" href="products.php"><b>VOIR TOUT</b></a>
+                                            <a class="dropdown-item" href="minecraft.php"> Minecraft</a>
+                                            <a class="dropdown-item" href="minecraftpe.php"> Minecraft Pocket Edition</a>
+                                            <a class="dropdown-item" href="fivem.php"> Five M</a>
+                                            <a class="dropdown-item" href="csgo.php">CS:GO</a>
+                                            <a class="dropdown-item" href="arma3.php">Arma III</a>
+                                            <a class="dropdown-item" href="terraria.php">Terraria</a>
                                         </li>
                                         <li class="menu-item">
                                             <h3>Serveurs VPS</h3>
-                                            <a class="dropdown-item" href="login.html"><b>VOIR TOUT</b></a>
-                                            <a class="dropdown-item" href="register.html">VPS Gaming</a>
-                                            <a class="dropdown-item" href="checkout-guest.html">VPS Stockage</a>
+                                            <a class="dropdown-item" href="products.php"><b>VOIR TOUT</b></a>
+                                            <a class="dropdown-item" href="#">VPS Gaming</a>
+                                            <a class="dropdown-item" href="#">VPS Stockage</a>
                                         </li>
                                         <li class="menu-item">
                                             <h3>Solutions WEB</h3>
-                                            <a class="dropdown-item" href="portfolio-2-column.html"><b>VOIR TOUT</b></a>
-                                            <a class="dropdown-item" href="portfolio-3-column.html">Hébergement WEB </a>
-                                            <a class="dropdown-item" href="portfolio-4-column.html">Hébergement MAIL </a>
-                                            <a class="dropdown-item" href="portfolio-masonary.html">Nom de domaine</a>
-                                            <a class="dropdown-item" href="portfolio-detail.html">Base de donnée MySQL</a>
+                                            <a class="dropdown-item" href="products.php"><b>VOIR TOUT</b></a>
+                                            <a class="dropdown-item" href="#">Hébergement WEB </a>
+                                            <a class="dropdown-item" href="#">Hébergement MAIL </a>
+                                            <a class="dropdown-item" href="#">Nom de domaine</a>
+                                            <a class="dropdown-item" href="#">Base de donnée MySQL</a>
                                         </li>
                                         <li class="menu-item">
                                             <h3>Autres</h3>
-                                            <a class="dropdown-item" href="blog-2-column.html"> <b>VOIR TOUT</b></a>
-                                            <a class="dropdown-item" href="blog-3-masonary.html">BOT Discord</a>
+                                            <a class="dropdown-item" href="products.php"> <b>VOIR TOUT</b></a>
+                                            <a class="dropdown-item" href="#">BOT Discord</a>
                                             <a class="dropdown-item" href="#">SUR-MESURE</a>
                                         </li>
                                     </ul>
@@ -122,8 +98,8 @@
                                     Revendeurs
                                 </a>
                                 <div class="drop-menu">
-                                    <a class="dropdown-item" href="blog-2-column.html">Ptérodactyl</a>
-                                    <a class="dropdown-item" href="blog-3-masonary.html">Sur-mesure</a>
+                                    <a class="dropdown-item" href="#">Ptérodactyl</a>
+                                    <a class="dropdown-item" href="#">Sur-mesure</a>
                                 </div>
                             </li>
                             <li class="nav-item drop has-drop">
@@ -131,13 +107,13 @@
                                     Partenaires
                                 </a>
                                 <div class="drop-menu">
-                                    <a class="dropdown-item" href="shared-hosting.html">Listing Partenaire</a>
-                                    <a class="dropdown-item" href="dedicated-hosting.html">Déposer un dossier</a>
-                                    <a class="dropdown-item" href="vps-hosting.html">Espace partenaire</a>
+                                    <a class="dropdown-item" href="#">Listing Partenaire</a>
+                                    <a class="dropdown-item" href="partner-new.php">Déposer un dossier</a>
+                                    <a class="dropdown-item" href="#">Espace partenaire</a>
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">CONTACT</a>
+                                <a class="nav-link" href="contact.php">CONTACT</a>
                             </li>
                         </ul>
 
@@ -161,7 +137,7 @@
                             <div class="col-6">
                                 <div class="mobile-logo">
                                     <a href="index.php">
-                                        <img src="img/logo-blue-mobile.png" alt="logo">
+                                        <img src="img/logo.png" alt="logo">
                                     </a>
                                 </div>
                             </div>

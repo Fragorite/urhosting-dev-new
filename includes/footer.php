@@ -6,7 +6,7 @@
                 <h3>TROUVEZ VOTRE HEBERGEMENT</h3>
             </div>
             <div class="subs-btn">
-                <a href="#" class="btn host-btn"> Voir les offres </a>
+                <a href="products.php" class="btn host-btn"> Voir les offres </a>
             </div>
         </div>
     </div>
@@ -19,7 +19,7 @@
                 <div class="col-md-3 col-sm-6">
                     <div class="contact-menu">
                         <a href="index.php" class="footer-logo">
-                            <img src="img/logo-foot-blue.png" alt="hostby">
+                            <img src="img/logo.png" alt="UrHosting">
                         </a>
                         <ul>
                             <li>
@@ -40,22 +40,22 @@
                         <h3 class="foot-heading">UrHosting</h3>
                         <ul>
                             <li>
-                                <a href="about-us.html">A propos</a>
+                                <a href="#">A propos</a>
                             </li>
                             <li>
-                                <a href="blog-detail.html">Mentions Légales</a>
+                                <a href="#">Mentions Légales</a>
                             </li>
                             <li>
-                                <a href="our-team.html">Moyens de paiements</a>
+                                <a href="#">Moyens de paiements</a>
                             </li>
                             <li>
-                                <a href="contact-us.html">C.G.U. / C.G.V.</a>
+                                <a href="#">C.G.U. / C.G.V.</a>
                             </li>
                             <li>
-                                <a href="shared-hosting.html">Protection des données</a>
+                                <a href="#">Protection des données</a>
                             </li>
                             <li>
-                                <a href="faq.html">Foire Aux Questions</a>
+                                <a href="#">Foire Aux Questions</a>
                             </li>
                         </ul>
                     </div>
@@ -65,22 +65,16 @@
                         <h3 class="foot-heading">Hébergement</h3>
                         <ul>
                             <li>
-                                <a href="shared-hosting.html">Solution WEB</a>
+                                <a href="#">Solution WEB</a>
                             </li>
                             <li>
-                                <a href="shared-hosting.html">Serveurs de jeux</a>
+                                <a href="#">Serveurs de jeux</a>
                             </li>
                             <li>
-                                <a href="shared-hosting.html">Offres VPS</a>
+                                <a href="#">Offres VPS</a>
                             </li>
                             <li>
-                                <a href="shared-hosting.html">Revendeur Ptérodactyl</a>
-                            </li>
-                            <li>
-                                <a href="shared-hosting.html">vps hosting</a>
-                            </li>
-                            <li>
-                                <a href="shared-hosting.html">shared hosting</a>
+                                <a href="#">Revendeur Ptérodactyl</a>
                             </li>
                         </ul>
                     </div>
@@ -91,12 +85,12 @@
                         <ul>
                             <li>
                                 <a href="#">
-                                    <i class="fa fa-facebook"></i>
+                                    <i class="fab fa-facebook"></i>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <i class="fa fa-twitter"></i>
+                                    <i class="fab fa-twitter"></i>
                                 </a>
                             </li>
                         </ul>
@@ -108,7 +102,7 @@
     <div class="footer-copyright">
         <p>
             © Copyright | UrHosting 2019 - <?php echo date('Y'); ?>. All Right Reserved Developed By
-            <a href="#"> UrHosting</a>
+            <a href="index.php"> UrHosting</a>
         </p>
     </div>
 </section>

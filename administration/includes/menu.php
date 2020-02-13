@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/administration/index.php">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -13,7 +13,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="/urhosting-dev-new/administration/index.php">
+        <a class="nav-link" href="/administration/index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Tableau de bord</span></a>
       </li>
@@ -34,9 +34,9 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="/urhosting-dev-new/administration/statistiques/stats-billing.php">Ventes</a>
-            <a class="collapse-item" href="/urhosting-dev-new/administration/statistiques/stats-support.php">Support</a>
-            <a class="collapse-item" href="/urhosting-dev-new/administration/statistiques/stats-site.php">Site</a>
+            <a class="collapse-item" href="/administration/statistiques/stats-billing.php">Ventes</a>
+            <a class="collapse-item" href="/administration/statistiques/stats-support.php">Support</a>
+            <a class="collapse-item" href="/administration/statistiques/stats-site.php">Site</a>
           </div>
         </div>
       </li>
@@ -74,12 +74,13 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Groupes</h6>
-            <a class="collapse-item" href="/urhosting-dev-new/administration/products/addProductGroup.php">Ajouter un groupe</a>
-            <a class="collapse-item" href="/urhosting-dev-new/administration/products/listProductGroup.php">Liste des groupes</a>
+            <a class="collapse-item" href="/administration/products/addProductGroup.php">Ajouter un groupe</a>
+            <a class="collapse-item" href="/administration/products/listProductGroup.php">Liste des groupes</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Produits</h6>
-            <a class="collapse-item" href="/urhosting-dev-new/administration/products/addProduct.php">Ajouter un produit</a>
-            <a class="collapse-item" href="/urhosting-dev-new/administration/products/listProducts.php">Liste des produits</a>
+            <a class="collapse-item" href="/administration/products/addProduct.php">Ajouter un produit</a>
+            <a class="collapse-item" href="/administration/products/addAddon.php">Ajouter un addon groupé</a>
+            <a class="collapse-item" href="/administration/products/listProducts.php">Liste des produits</a>
           </div>
         </div>
       </li>
@@ -167,12 +168,12 @@
         <div id="collapseSupport" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Catégories</h6>
-            <a class="collapse-item" href="/urhosting-dev-new/administration/knowledge-base/addCategory.php">Ajouter une catégories</a>
-            <a class="collapse-item" href="/urhosting-dev-new/administration/knowledge-base/listCategories.php">Liste des catégories</a>
+            <a class="collapse-item" href="/administration/knowledge-base/addCategory.php">Ajouter une catégories</a>
+            <a class="collapse-item" href="/administration/knowledge-base/listCategories.php">Liste des catégories</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Tutoriels</h6>
-            <a class="collapse-item" href="/urhosting-dev-new/administration/knowledge-base/addTutorial.php">Ajouter un tutoriel</a>
-            <a class="collapse-item" href="/urhosting-dev-new/administration/knowledge-base/listTutorials.php">Liste des tutoriels</a>
+            <a class="collapse-item" href="/administration/knowledge-base/addTutorial.php">Ajouter un tutoriel</a>
+            <a class="collapse-item" href="/administration/knowledge-base/listTutorials.php">Liste des tutoriels</a>
           </div>
         </div>
       </li>
@@ -183,8 +184,8 @@
         </a>
         <div id="collapsePartner" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="/urhosting-dev-new/administration/partners/addPartner.php">Ajouter un partenaire</a>
-            <a class="collapse-item" href="/urhosting-dev-new/administration/partners/listPartners.php">Liste des partenaires</a>
+            <a class="collapse-item" href="/administration/partners/addPartner.php">Ajouter un partenaire</a>
+            <a class="collapse-item" href="/administration/partners/listPartners.php">Liste des partenaires</a>
           </div>
         </div>
       </li>

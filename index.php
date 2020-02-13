@@ -317,7 +317,7 @@
                                         <a class="features-tab" href="#secure">
                                             Scan de sécurité avancé
                                             <span class="f-item-icon">
-                                                <img src="img/icons/fea-3.png" alt="icon">
+                                                <img src="img/icons/fea-4.png" alt="icon">
                                             </span>
                                             <span class="dot"></span>
                                         </a>
@@ -326,7 +326,7 @@
                                         <a class="features-tab" href="#support">
                                             Support 24x7
                                             <span class="f-item-icon">
-                                                <img src="img/icons/fea-4.png" alt="icon">
+                                                <img src="img/icons/fea-3.png" alt="icon">
                                             </span>
                                             <span class="dot"></span>
                                         </a>

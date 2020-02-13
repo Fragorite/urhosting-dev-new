@@ -114,7 +114,7 @@ if (isset($_POST['formSend'])) {
                                             'docIdentity'       => $newName,
                                             'status'            => 0
                                         ));
-                                        print("TOUT EST OK");
+                                        header('Location: index.php?partnerCreated');
                                     } else {
                                         $error = "L'extension n'est pas acceptée ! (png, jpg, jpeg, pdf seulement)";
                                     }
@@ -167,7 +167,7 @@ if (isset($_POST['formSend'])) {
     </header>
     <!-- ====== header ends ====== -->
     <!-- ====== top-banner starts ====== -->
-    <div class="top-banner" style="background-image:url(img/banner/login-banner.jpg)">
+    <div class="top-banner" style="background-image:url(img/home/host-slide3.jpg)">
         <div class="banner-overlay">
             <h2>PARTENARIAT</h2>
             <div class="banner-links">
