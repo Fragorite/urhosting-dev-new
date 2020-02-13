@@ -12,7 +12,7 @@ $db_name = "urhosting";*/
 // Configuration externe
 $db_host = "localhost";
 $db_username = "root";
-$db_password = "8eJ4y5XaUY79rC8u";
+$db_password = "";
 $db_name = "urhosting";
 
 try {
