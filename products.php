@@ -57,11 +57,12 @@
                         while($group = $searchGroups->fetch(PDO::FETCH_ASSOC)) {
                             ?>
                             <a href="<?php echo $group['pageName']; ?>">
-                            <div class="col-lg-3 col-md-6 port-item <?php if($group['typeServersGaming'] == 1) { echo "servers-gaming"; } if($group['typeServersVPS'] == 1) { echo "servers-vps";
-                            } if($group['typeWeb'] == 1) { echo "web"; } if($group['typeOthers'] == 1) { echo "others"; } ?>">
+                            <div class="col-lg-3 col-md-6 port-item <?php if($group['typeServersGaming'] == 1) { echo
+                            "servers-gaming"; } if($group['typeServersVPS'] == 1) { echo " servers-vps";
+                            } if($group['typeWeb'] == 1) { echo " web"; } if($group['typeOthers'] == 1) { echo " others"; } ?>">
                                 <a href="<?php echo $group['pageName']; ?>">
                                     <div class="portfolio-inner">
-                                        <img src="administration/products/images/<?= $group['img']; ?>" width="250px" height="270px">
+                                        <img src="administration/products/images/<?= $group['img']; ?>" width="250px" height="270px" style="background-color: lightgray;">
                                         <div class="dimmer">
                                             <h4>
                                                 <a href="<?php echo $group['pageName']; ?>"> <?= $group['title']; ?></a>

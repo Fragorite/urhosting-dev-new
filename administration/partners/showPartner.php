@@ -36,8 +36,32 @@
   <link href="<?= $redirect; ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script>
+    $(document).ready(function(){
+        $(".input-type").on('change', function postinput(){
+            var matchvalue = $(this).val(); // this.value
+            var inputName = $(this).attr('name');
+            $.ajax({
+                url: '../functions/inputForm.php',
+                data: { 
+                    value : matchvalue,
+                    input : inputName,
+                    id : <?= $getId; ?>
+                },
+                type: 'post'
+            }).done(function(responseData) {
+                console.log('Done: ', responseData);
+            }).fail(function() {
+                console.log('Failed');
+            });
+        });
+    });
+  </script>
+
   <!-- Custom styles for this template-->
   <link href="<?= $redirect; ?>css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="<?= $redirect; ?>css/formInput.css" rel="stylesheet">
 
 </head>
 
@@ -66,6 +90,103 @@
             <h1 class="h3 mb-0 text-gray-800">Dossier <?php echo $partner['contractNumber'].' / '.$partner['contractVersion'].' / '.$partner['contractYear']; ?> - <?php if($partner['active'] == 1) { echo "<font color='green'><b>ACTIF</b></font>"; } else { echo "<font color='red'><b>RÉSILIÉ</b></font>"; } ?></h1>
           </div>
           <!-- Content Row -->
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active show" href="#informations" data-toggle="tab">Informations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#reporter" data-toggle="tab">Déclarant</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#project" data-toggle="tab">Projet</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#documents" data-toggle="tab">Documents</a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade active show" id="informations">
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="reporter">
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div class="input-container">
+                                    <i class="fas fa-user input-icon"></i>
+                                    <input type="text" value="<?= $partner['userName']; ?>" class="input-type" name="userName"/>
+                                </div>
+                                <div class="input-container">
+                                    <i class="fas fa-user input-icon"></i>
+                                    <input type="text" value="<?= $partner['userLastName']; ?>" class="input-type" name="userLastName"/>
+                                </div>
+                                <div class="input-container">
+                                    <i class="fas fa-map-marked-alt input-icon"></i>
+                                    <input type="text" value="<?= $partner['userAdress']; ?>" class="input-type" name="userAdress" style="width: 900px;"/>
+                                </div>
+                                <div class="input-container">
+                                    <i class="fas fa-city input-icon"></i>
+                                    <input type="text" value="<?= $partner['userCity']; ?>" class="input-type" name="userCity" />
+                                    <div class="mr-3"></div>
+                                    <i class="fas fa-map-marker-alt input-icon"></i>
+                                    <input type="text" value="<?= $partner['userZipCode']; ?>" class="input-type" name="userZipCode" />
+                                    <div class="mr-3"></div>
+                                    <i class="fas fa-globe input-icon"></i>
+                                    <input type="text" value="<?= $partner['userCountry']; ?>" class="input-type" name="userCountry" />
+                                </div>
+                                <div class="input-container">
+                                    <i class="fas fa-phone input-icon"></i>
+                                    <input type="text" value="<?= $partner['userPhone']; ?>" class="input-type" name="userPhone" />
+                                    <div class="mr-3"></div>
+                                    <i class="far fa-envelope input-icon"></i>
+                                    <input type="text" value="<?= $partner['userMail']; ?>" class="input-type" name="userMail" style="width: 500px;"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="project">
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="documents">
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- -------------------------------------- -->
           <?php
                 if(isset($_GET['updateStatus'])){
                 ?>

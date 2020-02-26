@@ -1,14 +1,6 @@
 ﻿<?php include('administration/includes/config.php'); ?>
 <?php
-    /*
-     * LES FONCTIONS
-     */
     include('functions/productsPricing.php');
-
-
-    /*
-     * DEBUT DU CODE
-     */
     $pageName = basename(__FILE__);
     $groupSearch = $db->query('SELECT * FROM site_products_groups WHERE pageName = "'.$pageName.'"');
     $group = $groupSearch->fetch(PDO::FETCH_ASSOC);
@@ -94,8 +86,7 @@
                 <div class="row">
                     <?php
                         while($product = $productSearch->fetch(PDO::FETCH_ASSOC)) {
-                            $productPricingSearch = $db->query('SELECT * FROM tblpricing WHERE id = (SELECT MAX(id) FROM tblpricing WHERE relid = "'.$product['productIdWhmcs'].'" AND type = "product")');
-                            $productPricing = $productPricingSearch->fetch(PDO::FETCH_ASSOC);
+                            $productPricing = getMaxProductPricing($product['productIdWhmcs']);
                             ?>
                             <div class="col-lg-3 col-md-6">
                                 <div class="plan-wrap">
@@ -108,16 +99,21 @@
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <?= $productPricing['monthly'] ?> €
+                                                    <?php echo $productPricing['monthly'] ?> €
                                                     <span> / mois</span>
                                                     <?php
+                                                        if($productPricing['msetupfee'] != "0.00") {
+                                                            ?>
+                                                                <span alt="Seulement le premier mois !">Configuration : <?= $productPricing['msetupfee']; ?> €</span>
+                                                            <?php
+                                                        }
                                                 }
                                             ?>
                                         </h4>
                                     </div>
                                     <div class="plan-body">
                                         <div class="plan-body-img">
-                                            <img src="administration/products/images/<?= $group['img']; ?>" style="border-radius: 50%;" alt="icons">
+                                            <img src="administration/products/images/<?= $product['image']; ?>" width="50px" height="10px" style="background-color: lightgray; border-radius: 50%;" alt="icons">
                                         </div>
                                         <h5><?= $product['title']; ?></h5>
                                     </div>

@@ -73,6 +73,7 @@
                                                                     $reporterLastName       = $_POST['lastNameAdd'];
                                                                     $reporterSexe           = $_POST['sexeAdd'];
                                                                     $reporterAdress         = $_POST['adressAdd'];
+                                                                    $reporterCity           = $_POST['cityAdd'];
                                                                     $reporterZipCode        = $_POST['zipCodeAdd'];
                                                                     $reporterCountry        = $_POST['countryAdd'];
                                                                     $reporterPhone          = $_POST['phoneAdd'];
@@ -95,19 +96,21 @@
                                                                     if($status != 3){
                                                                         $projectAdress  = $_POST['companyAdressAdd'];
                                                                         $projectZipCode = $_POST['companyZipCodeAdd'];
+                                                                        $projectCity    = $_POST['companyCityAdd'];
                                                                         $projectCountry = $_POST['companyCountryAdd'];
                                                                         $projectPhone   = $_POST['companyPhoneAdd'];
                                                                         $projectMail    = $_POST['companyMailAdd'];
                                                                     } else {
                                                                         $projectAdress  = 0;
                                                                         $projectZipCode = 0;
+                                                                        $projectCity    = 0;
                                                                         $projectCountry = 0;
                                                                         $projectPhone   = 0;
                                                                         $projectMail    = 0;
                                                                     }
 
                                                                     // _____________________________________
-                                                                    $query_insert = $db->prepare('INSERT INTO site_partners(contractNumber, contractYear, contractVersion, userName, userLastName, userSexe, userAdress, userZipCode, userCountry, userPhone, userMail, projectNumber, projectStatus, projectName, projectAdress, projectZipCode, projectCountry, projectPhone, projectMail, startDate, endDate, partnerContract, partnerConditions, password) VALUES (:contractNumber, :contractYear, :contractVersion, :reporterName, :reporterLastName, :reporterSexe, :reporterAdress, :reporterZipCode, :reporterCountry, :reporterPhone, :reporterMail, :projectNumber, :projectStatus, :projectName, :projectAdress, :projectZipCode, :projectCountry, :projectPhone, :projectMail, :startDate, :endDate, :partnerContract, :partnerConditions, :password)');
+                                                                    $query_insert = $db->prepare('INSERT INTO site_partners(contractNumber, contractYear, contractVersion, userName, userLastName, userSexe, userAdress, userCity, userZipCode, userCountry, userPhone, userMail, projectNumber, projectStatus, projectName, projectAdress, projectZipCode, projectCity, projectCountry, projectPhone, projectMail, startDate, endDate, partnerContract, partnerConditions, password) VALUES (:contractNumber, :contractYear, :contractVersion, :reporterName, :reporterLastName, :reporterSexe, :reporterAdress, :userCity, :reporterZipCode, :reporterCountry, :reporterPhone, :reporterMail, :projectNumber, :projectStatus, :projectName, :projectAdress, :projectZipCode, :projectCity, :projectCountry, :projectPhone, :projectMail, :startDate, :endDate, :partnerContract, :partnerConditions, :password)');
                                                                     $query_insert->execute(array(
                                                                         'contractNumber'    => $contractNumber,
                                                                         'contractYear'      => $contractYear,
@@ -116,6 +119,7 @@
                                                                         'reporterLastName'  => $reporterLastName,
                                                                         'reporterSexe'      => $reporterSexe,
                                                                         'reporterAdress'    => $reporterAdress,
+                                                                        'userCity'          => $reporterCity,
                                                                         'reporterZipCode'   => $reporterZipCode,
                                                                         'reporterCountry'   => $reporterCountry,
                                                                         'reporterPhone'     => $reporterPhone,
@@ -125,6 +129,7 @@
                                                                         'projectName'       => $projectName,
                                                                         'projectAdress'     => $projectAdress,
                                                                         'projectZipCode'    => $projectZipCode,
+                                                                        'projectCity'       => $projectCity,
                                                                         'projectCountry'    => $projectCountry,
                                                                         'projectPhone'      => $projectPhone,
                                                                         'projectMail'       => $projectMail,
@@ -132,7 +137,8 @@
                                                                         'endDate'           => $endDate,
                                                                         'partnerContract'   => $file_contract,
                                                                         'partnerConditions' => $file_conditions,
-                                                                        'password'          => '0'
+                                                                        'password'          => '0',
+                                                                        'active'            => '1'
                                                                     ));
                                                                     header('Location: listPartner.php?createPartnerSuccess');
                                                             }
@@ -292,14 +298,24 @@
                             <table>
                                 <tr>
                                     <th>
-                                        <div class="form-group" style="width: 500px">
+                                        <div class="form-group" style="width: 400px">
                                             <label class="col-sm-2 col-form-label" for="adressLabel">Adresse</label>
                                             <input type="text" class="form-control form-control-partner <?php if(isset($errors['adressAdd'])) { echo 'is-invalid'; } ?>" id="adressLabel" name="adressAdd" placeholder="Adresse (n° rue et voie)">
                                         </div>
                                     </th>
                                     <th>
-                                        <div class="form-group" style="width: 300px">
-                                            <label class="col-sm-2 col-form-label" for="zipCodeLabel">ZipCode</label>
+                                        <div class="form-group" style="width: 200px">
+                                            <label class="col-sm-2 col-form-label"
+                                                   for="cityLabel">Ville</label>
+                                            <input type="text" class="form-control form-control-partner <?php if
+                                            (isset($errors['cityAdd'])) { echo 'is-invalid'; } ?>"
+                                                   id="cityLabel" name="cityAdd" placeholder="Ville">
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="form-group" style="width: 200px">
+                                            <label class="col-form-label" for="zipCodeLabel">Code
+                                                Postal</label>
                                             <input type="text" class="form-control form-control-partner <?php if(isset($errors['zipCodeAdd'])) { echo 'is-invalid'; } ?>" id="zipCodeLabel" name="zipCodeAdd" placeholder="00000">
                                         </div>
                                     </th>
@@ -371,22 +387,54 @@
                                     </th>
                                 </tr>
                             </table>
-
+                                    <?php
+                                } else {
+                                    // Particulier
+                                    ?>
+                                    <table>
+                                        <tr>
+                                            <th>
+                                                Concernant le projet :
+                                            </th>
+                                        </tr>
+                                    </table>
+                                    <table>
+                                        <tr>
+                                            <th>
+                                                <label class="col-sm-2 col-form-label" for="projectLabel">Projet</label>
+                                                <input type="text" class="form-control form-control-partner <?php if(isset($errors['projectAdd'])) { echo 'is-invalid'; } ?>" id="projectLabel" name="projectAdd" placeholder="Nom du projet (+jeu ...)">
+                                            </th>
+                                            <th style="width: 400px">
+                                                <label class="col-sm-2 col-form-label" for="functionLabel">Fonction</label>
+                                                <input type="text" class="form-control form-control-partner <?php if(isset($errors['functionAdd'])) { echo 'is-invalid'; } ?>" id="functionLabel" name="functionAdd" placeholder="Fonction du déclarant au sein du projet">
+                                            </th>
+                                        </tr>
+                                    </table>
                             <?php
                                 }
-                                else if($status == 1 || $status == 2){
+                                if($status == 1 || $status == 2){
                             ?>
                             <table>
                                 <tr>
                                     <th>
-                                        <div class="form-group" style="width: 500px">
+                                        <div class="form-group" style="width: 400px">
                                             <label class="col-sm-2 col-form-label" for="companyAdressLabel">Adresse</label>
                                             <input type="text" class="form-control form-control-partner <?php if(isset($errors['companyAdressAdd'])) { echo 'is-invalid'; } ?>" id="companyAdressLabel" name="companyAdressAdd" placeholder="Adresse (n° rue et voie)">
                                         </div>
                                     </th>
                                     <th>
-                                        <div class="form-group" style="width: 300px">
-                                            <label class="col-sm-2 col-form-label" for="companyZipCodeLabel">ZipCode</label>
+                                        <div class="form-group" style="width: 200px">
+                                            <label class="col-sm-2 col-form-label"
+                                                   for="companyCityLabel">Ville</label>
+                                            <input type="text" class="form-control form-control-partner <?php if
+                                            (isset($errors['companyCityAdd'])) { echo 'is-invalid'; } ?>"
+                                                   id="companyCityLabel" name="companyCityAdd" placeholder="Ville">
+                                        </div>
+                                    </th>
+                                    <th>
+                                        <div class="form-group" style="width: 200px">
+                                            <label class="col-form-label"
+                                                   for="companyZipCodeLabel">Code Postal</label>
                                             <input type="text" class="form-control form-control-partner <?php if(isset($errors['companyZipCoDEAdd'])) { echo 'is-invalid'; } ?>" id="companyZipCodeLabel" name="companyZipCodeAdd" placeholder="00000">
                                         </div>
                                     </th>
@@ -407,29 +455,6 @@
                                     <th style="width: 400px">
                                         <label class="col-sm-2 col-form-label" for="companyMailLabel">Email</label>
                                         <input type="text" class="form-control form-control-partner <?php if(isset($errors['companyPhoneAdd'])) { echo 'is-invalid'; } ?>" id="companyMailLabel" name="companyMailAdd" placeholder="jean-marc@outlook.fr">
-                                    </th>
-                                </tr>
-                            </table>
-                            <?php
-                                } else {
-                                    // Particulier
-                            ?>
-                            <table>
-                                <tr>
-                                    <th>
-                                        Concernant le projet :
-                                    </th>
-                                </tr>
-                            </table>
-                            <table>
-                                <tr>
-                                    <th>
-                                        <label class="col-sm-2 col-form-label" for="projectLabel">Projet</label>
-                                        <input type="text" class="form-control form-control-partner <?php if(isset($errors['projectAdd'])) { echo 'is-invalid'; } ?>" id="projectLabel" name="projectAdd" placeholder="Nom du projet (+jeu ...)">
-                                    </th>
-                                    <th style="width: 400px">
-                                        <label class="col-sm-2 col-form-label" for="functionLabel">Fonction</label>
-                                        <input type="text" class="form-control form-control-partner <?php if(isset($errors['functionAdd'])) { echo 'is-invalid'; } ?>" id="functionLabel" name="functionAdd" placeholder="Fonction du déclarant au sein du projet">
                                     </th>
                                 </tr>
                             </table>

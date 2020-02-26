@@ -7,6 +7,13 @@
 	        $searchExist = $db->query('SELECT * FROM site_products WHERE productIdWhmcs = "'.$productIdWhmcs.'"');
 	        $productExist = $searchExist->rowCount();
 	        if($productExist == 0){
+                $file_ext = explode('.', $_FILES['imageAddFile']['name']);
+                $file_ext = strtolower(end($file_ext));
+
+                $newName = uniqid() . '.' . $file_ext;
+                move_uploaded_file($_FILES['imageAddFile']['tmp_name'], 'images/' . $newName);
+
+                // FIN FICHIER
                 $createdAt = date('d/m/Y à H:i');
                 $titleAdd = htmlspecialchars($_POST['titleAdd']);
                 $description = htmlspecialchars($_POST['contentAdd']);
@@ -16,7 +23,7 @@
                 if(isset($_POST['addSlots']) && !empty($_POST['addSlots'])) { $addSlots = $_POST['addSlots']; } else { $addSlots = ''; }
                 if(isset($_POST['addDatabase']) && !empty($_POST['addDatabase'])) { $addDatabase = $_POST['addDatabase']; } else { $addDatabase = ''; }
                 if(isset($_POST['addBandwith']) && !empty($_POST['addBandwith'])) { $addBandwith = $_POST['addBandwith']; } else { $addBandwith = ''; }
-                $insert = $db->prepare('INSERT INTO site_products(title,description,created_at,productIdWhmcs,groupId,addProcess,addRam,addStockage,addSlots,addDatabase,addBandwith) VALUES (:title,:description,:created_at,:productIdWhmcs,:groupId,:addProcess,:addRam,:addStockage,:addSlots,:addDatabase,:addBandwith)');
+                $insert = $db->prepare('INSERT INTO site_products(title,description,created_at,productIdWhmcs,groupId,addProcess,addRam,addStockage,addSlots,addDatabase,addBandwith,image) VALUES (:title,:description,:created_at,:productIdWhmcs,:groupId,:addProcess,:addRam,:addStockage,:addSlots,:addDatabase,:addBandwith,:image)');
                 $insert->execute(array(
                     'title'         => $titleAdd,
                     'description'   => $description,
@@ -28,7 +35,8 @@
                     'addStockage'   => $addStockage,
                     'addSlots'      => $addSlots,
                     'addDatabase'   => $addDatabase,
-                    'addBandwith'   => $addBandwith
+                    'addBandwith'   => $addBandwith,
+                    'image'         => $newName
                 ));
                 header('Location: listProducts.php?productCreate');
 
@@ -255,6 +263,12 @@
                             <?php
                         }
                         ?>
+                        <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
+                        <div class="form-group">
+                            <label for="contractPartnerFile">Image affichée</label>
+                            <input class="form-control-file" id="contractPartnerFile" name="imageAddFile" aria-describedby="contractPartnerHelp" type="file">
+                            <small class="form-text text-muted" id="contractPartnerHelp">Cette image sera affichée sur le site !</small>
+                        </div>
                         <table>
                             <tr>
                                 <th>

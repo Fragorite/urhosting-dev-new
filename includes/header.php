@@ -98,7 +98,7 @@
                                     Revendeurs
                                 </a>
                                 <div class="drop-menu">
-                                    <a class="dropdown-item" href="#">Ptérodactyl</a>
+                                    <a class="dropdown-item" href="pterodactyl.php">Ptérodactyl</a>
                                     <a class="dropdown-item" href="#">Sur-mesure</a>
                                 </div>
                             </li>

@@ -194,4 +194,3 @@
     </div>
 
 </nav>
-     <?php include('urhosting-dev-new/administration/functions/successOrError.php'); ?>
