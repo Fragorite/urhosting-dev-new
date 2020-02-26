@@ -3,6 +3,7 @@
     $deleteAllAlertsSuccess = "Toutes les alertes ont été supprimées.";
     $createPartnerSuccess = "Le partenaire a bien été ajouté.";
     $cancelPartnerContractSuccess = "Le contrat avec le partenaire a été résilié. Vous pouvez à tout moment le retrouver dans l'onglet \"<strong>Contrats terminés</strong>\" ";
+    $deletePartnerContractSuccess = "Ceci est un test !!";
 
     // LES ERREURS
     $accessDenied = "<strong>Erreur !</strong> Vous n'avez pas la permission pour accéder à cette fonction.";
@@ -16,6 +17,9 @@
     }
     else if(isset($_GET['cancelPartnerContractSuccess'])){
         echoMsg($cancelPartnerContractSuccess, 1);
+    }
+    else if(isset($_GET['deletePartnerContractSuccess'])){
+        echoMsg($deletePartnerContractSuccess, 1);
     }
 
     // LE COIN DES ERREURS

@@ -186,6 +186,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="/administration/partners/addPartner.php">Ajouter un partenaire</a>
             <a class="collapse-item" href="/administration/partners/listPartners.php">Liste des partenaires</a>
+              <a class="collapse-item" href="/administration/partners/listPartnersWait.php">Liste des demandes</a>
           </div>
         </div>
       </li>

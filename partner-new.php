@@ -68,7 +68,7 @@ if (isset($_POST['formSend'])) {
                             else if($statusSend == 3){
                                 $projectStatus = 2;
                             } else {
-                                $projectStatus = 1;
+                                $projectStatus = 3;
                             }
                             $projectNumber = htmlspecialchars($_POST['numberPartner']);
                             $projectDescription = htmlspecialchars($_POST['descriptionPartner']);
@@ -84,7 +84,7 @@ if (isset($_POST['formSend'])) {
                                     if(in_array($file_ext, $tabExt)){
                                         $newName = uniqid(). '.' .$file_ext;
                                         move_uploaded_file($_FILES['CNIRecto']['tmp_name'], 'administration/partners/folder/waiting/'.$newName);
-                                        $insert = $db->prepare('INSERT INTO site_partners_wait(userName,userLastName,userBirthday,userSexe,userAdress,userZipCode,userCity,userCountry,userPhone,userMail,userFunction,projectNumber,projectName,projectDescription,projectStatus,projectAdress,projectZipCode,projectCity,projectCountry,projectPhone,projectMail,startDate,endDate,password,description,docIdentity,status) VALUES (:userName, :userLastName,:userBirthday,:userSexe,:userAdress,:userZipCode,:userCity,:userCountry,:userPhone,:userMail,:userFunction,:projectNumber,:projectName,:projectDescription,:projectStatus,:projectAdress,:projectZipCode,:projectCity,:projectCountry,:projectPhone,:projectMail,:startDate,:endDate,:password,:description,:docIdentity,:status)');
+                                        $insert = $db->prepare('INSERT INTO site_partners_wait(userName,userLastName,userBirthday,userSexe,userAdress,userZipCode,userCity,userCountry,userPhone,userMail,userFunction,projectNumber,projectName,projectDescription,projectStatus,projectAdress,projectZipCode,projectCity,projectCountry,projectPhone,projectMail,startDate,endDate,password,description,docIdentity,status,createdAt) VALUES (:userName, :userLastName,:userBirthday,:userSexe,:userAdress,:userZipCode,:userCity,:userCountry,:userPhone,:userMail,:userFunction,:projectNumber,:projectName,:projectDescription,:projectStatus,:projectAdress,:projectZipCode,:projectCity,:projectCountry,:projectPhone,:projectMail,:startDate,:endDate,:password,:description,:docIdentity,:status,:createdAt)');
                                         $insert->execute(array(
                                            'userName'           => $userName,
                                            'userLastName'       => $userLastName,
@@ -112,7 +112,8 @@ if (isset($_POST['formSend'])) {
                                             'password'          => $password,
                                             'description'       => $description,
                                             'docIdentity'       => $newName,
-                                            'status'            => 0
+                                            'status'            => 0,
+                                            'createdAt'         => $createdAt
                                         ));
                                         header('Location: index.php?partnerCreated');
                                     } else {

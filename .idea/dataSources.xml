@@ -7,5 +7,11 @@
       <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mariadb://localhost:3306/urhosting</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="URHOSTING" uuid="5128541d-1b48-4b3c-9685-5403739d8565">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://151.106.49.76:3306/urhosting</jdbc-url>
+    </data-source>
   </component>
 </project>
